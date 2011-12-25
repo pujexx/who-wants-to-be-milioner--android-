@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:orientation="vertical" android:background="@drawable/backgroundoverlay">
+	<TextView android:text="TextView" android:layout_height="wrap_content"
+		android:layout_width="fill_parent" android:id="@+id/nyawa"
+	
+		></TextView>
+	<TextView android:text="TextView" android:layout_height="wrap_content"
+		android:layout_width="fill_parent" android:id="@+id/title_pertanyaan"
+		
+		 android:textColor="#FF0000"
+        android:textSize="40px"
+		></TextView>
+
+	<TextView android:text="TextView" android:id="@+id/pertanyaan"
+		android:layout_height="wrap_content" android:layout_width="fill_parent"
+		android:textColor="#FFFFFF"
+		
+		></TextView>
+	<ScrollView android:id="@+id/ScrollView01" android:layout_width="fill_parent" android:layout_height="wrap_content">
+	<RadioGroup android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:orientation="vertical"
+		android:id="@+id/QueGroup1">
+		<RadioButton android:text="RadioButton" android:id="@+id/jawaban_a"
+			android:layout_height="wrap_content" android:layout_width="fill_parent"
+			android:background="@drawable/back_choice"
+			android:textColor="#FFFFFF"
+			 android:paddingLeft="60dp"
+			></RadioButton>
+
+		<RadioButton android:text="RadioButton" android:id="@+id/jawaban_b"
+			android:layout_height="wrap_content" android:layout_width="fill_parent"
+			android:background="@drawable/back_choice"
+		android:textColor="#FFFFFF"
+			 android:paddingLeft="60dp"
+			></RadioButton>
+		<RadioButton android:text="RadioButton" android:id="@+id/jawaban_c"
+			android:layout_height="wrap_content" android:layout_width="fill_parent"
+			android:background="@drawable/back_choice"
+		android:textColor="#FFFFFF"
+			android:paddingLeft="60dp"
+			></RadioButton>
+		<RadioButton android:text="RadioButton" android:id="@+id/jawaban_d"
+			android:layout_height="wrap_content" android:layout_width="fill_parent"
+			android:background="@drawable/back_choice"
+		android:textColor="#FFFFFF"
+			android:paddingLeft="60dp"
+			></RadioButton>
+	</RadioGroup>
+	</ScrollView>
+</LinearLayout>
