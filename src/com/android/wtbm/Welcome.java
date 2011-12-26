@@ -1,6 +1,6 @@
 package com.android.wtbm;
 
-//Copiright pujexx@android
+//Copyright pujexx@android
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -12,9 +12,9 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 
 import android.content.Intent;
-
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -32,6 +32,7 @@ public class Welcome extends Activity {
 	private static String urlnewgame = "http://ksweb.student.uad.ac.id/demo/kos/index.php/api/getsoal/";
 	private String ID_PHONE;
 	MediaPlayer startsound;
+	private ProgressDialog Loading;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,28 @@ public class Welcome extends Activity {
 
 			public void onClick(View v) {
 				// getPertanyaan();
+
+				Loading = ProgressDialog.show(Welcome.this, "loading..",
+						"Silahkan tunggu..");
+				new Thread() {
+
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						try {
+
+							sleep(5000);
+
+						} catch (Exception e) {
+
+							Log.e("tag", e.getMessage());
+
+						}
+
+						Loading.dismiss();
+					}
+
+				}.start();
 				String url = urlnewgame + ID_PHONE;
 				startsound.start();
 				if (getPertanyaan(url)) {
@@ -59,6 +82,7 @@ public class Welcome extends Activity {
 					startActivity(intent);
 
 				} else {
+
 					Toast.makeText(Welcome.this, "Harus ada koneksi !",
 							Toast.LENGTH_LONG).show();
 				}
@@ -112,7 +136,7 @@ public class Welcome extends Activity {
 		// TODO Auto-generated method stub
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
 
-			finish();
+			this.finish();
 
 		}
 		return super.onKeyDown(keyCode, event);

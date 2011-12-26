@@ -1,5 +1,5 @@
 package com.android.wtbm;
-//Copiright pujexx@android
+//Copyright pujexx@android
 import android.app.Activity;
 import android.content.Intent;
 import android.media.MediaPlayer;

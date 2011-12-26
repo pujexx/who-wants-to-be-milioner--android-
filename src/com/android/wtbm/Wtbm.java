@@ -1,7 +1,7 @@
 package com.android.wtbm;
 
 
-//Copiright pujexx@android
+//Copyright pujexx@android
 
 
 
@@ -23,7 +23,7 @@ public class Wtbm extends Activity {
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
 			
 			this.finish();
-			this.getParent().finish();
+			
 			
 		}
 		return super.onKeyDown(keyCode, event);

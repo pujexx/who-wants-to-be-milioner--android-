@@ -1,7 +1,7 @@
 package com.android.wtbm;
 
 
-//Copiright pujexx@android
+//Copyright pujexx@android
 
 
 import org.json.JSONArray;
@@ -37,6 +37,8 @@ public class PertanyaanA extends Activity {
 	TextView title_level;
 	MediaPlayer backsound;
 	MediaPlayer jawabansound;
+	MediaPlayer benar;
+	MediaPlayer salah;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,8 @@ public class PertanyaanA extends Activity {
 		setContentView(R.layout.soal);
 		backsound = MediaPlayer.create(PertanyaanA.this, R.raw.backsound);
 		jawabansound = MediaPlayer.create(this, R.raw.soundjawaban);
+		benar = MediaPlayer.create(PertanyaanA.this, R.raw.benar);
+		salah = MediaPlayer.create(PertanyaanA.this, R.raw.salah);
 		backsound.start();
 		backsound.setLooping(true);
 		pertanyaan_view = (TextView) findViewById(R.id.pertanyaan);
@@ -78,10 +82,10 @@ public class PertanyaanA extends Activity {
 					.toString();
 
 			pertanyaan_view.setText(pertanyaan1);
-			jawaban_a.setText(jawaban_a_1);
-			jawaban_b.setText(jawaban_b_1);
-			jawaban_c.setText(jawaban_c_1);
-			jawaban_d.setText(jawaban_d_1);
+			jawaban_a.setText("A.  "+jawaban_a_1);
+			jawaban_b.setText("B.  "+jawaban_b_1);
+			jawaban_c.setText("C.  "+jawaban_c_1);
+			jawaban_d.setText("D.  "+jawaban_d_1);
 			nyawa.setText("Tinggal "+Integer.toString(User.NYAWA)+" kesempatan lagi");
 			title_level.setText("UANG ANDA :\n"+level(User.LEVEL));
 
@@ -111,14 +115,23 @@ public class PertanyaanA extends Activity {
 			
 			if (jwb.equals(kunci)) {
 				if (User.LEVEL != 14) {
+					Toast.makeText(PertanyaanA.this, "Selamat jawaban anda benar dan masuk ke level selanjutnya", Toast.LENGTH_LONG).show();
+					benar.start();
 					User.LEVEL = User.LEVEL + 1;
 					getPertanyaan();
 				}else {
+					User.LEVEL = 0;
+					User.NYAWA = 3;
+					backsound.stop();
 					Intent win = new Intent(PertanyaanA.this,Wtbm.class);
+					
 					startActivity(win);
+					this.finish();
+					
 				}
 			} else {
 				Toast.makeText(PertanyaanA.this, "Jawaban anda salah yang benar adalah : "+kunci, Toast.LENGTH_LONG).show();
+				salah.start();
 				User.LEVEL = User.LEVEL + 1;
 				User.NYAWA = User.NYAWA - 1;
 				getPertanyaan();

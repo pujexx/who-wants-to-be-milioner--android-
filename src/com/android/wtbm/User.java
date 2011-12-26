@@ -1,5 +1,5 @@
 package com.android.wtbm;
-//Copiright pujexx@android
+//Copyright pujexx@android
 public class User {
 	public static int POINT = 0;
 	public static int LEVEL = 0;
